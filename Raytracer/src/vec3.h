@@ -2,6 +2,7 @@
 
 #include <array>
 #include <string>
+#include <ostream>
 
 
 class Vec3 {
@@ -14,7 +15,8 @@ public:
 
 	float dot(const Vec3& other) const;
 	Vec3 cross(const Vec3& other) const;
-
+	static Vec3 reflect(const Vec3& vec, const Vec3& normal);
+	static Vec3 refract(const Vec3& vec, const Vec3& normal, float index);
 	static Vec3 normalize(const Vec3& vec);
 	void normalize();
 
@@ -27,7 +29,8 @@ public:
 	Vec3 operator*(const Vec3& other) const;
 	Vec3 operator/(const Vec3& other) const;
 
-	Vec3 operator*(float val) const;
+	friend Vec3 operator*(const Vec3& vec, float val);
+	friend Vec3 operator*(float val, const Vec3& vec);
 	Vec3 operator/(float val) const;
 
 	float x() const;
@@ -38,6 +41,7 @@ public:
 	float g() const;
 	float b() const;
 
+	friend std::ostream& operator<<(std::ostream& os, const Vec3& vec);
 	const std::string toString() const;
 
 private:
