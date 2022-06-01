@@ -13,8 +13,8 @@ public:
 	Vec3(float x, float y, float z);
 	Vec3(const Vec3& other);
 
-	float dot(const Vec3& other) const;
-	Vec3 cross(const Vec3& other) const;
+	static float dot(const Vec3& a, const Vec3& b);
+	static Vec3 cross(const Vec3& a, const Vec3& b);
 	static Vec3 reflect(const Vec3& vec, const Vec3& normal);
 	static Vec3 refract(const Vec3& vec, const Vec3& normal, float index);
 	static Vec3 normalize(const Vec3& vec);
@@ -46,6 +46,6 @@ public:
 
 private:
 
-	std::array<float, 3> data;
+	std::array<float, 3> m_data;
 
 };
