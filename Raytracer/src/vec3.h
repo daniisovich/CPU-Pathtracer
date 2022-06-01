@@ -18,7 +18,7 @@ public:
 	static Vec3 normalize(const Vec3& vec);
 	void normalize();
 
-	Vec3 invert();
+	Vec3 invert() const;
 	float length() const;
 	float sq_length() const;
 

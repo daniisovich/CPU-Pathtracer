@@ -8,12 +8,10 @@ Vec3 Vec3::normalize(const Vec3& vec) {
 }
 
 void Vec3::normalize() {
-
 	float len{ length() };
 	data[0] /= len;
 	data[1] /= len;
 	data[2] /= len;
-
 }
 
 float Vec3::dot(const Vec3& other) const {
@@ -26,7 +24,7 @@ Vec3 Vec3::cross(const Vec3& other) const {
 			 data[0] * other.data[1] - data[1] * other.data[0] };
 }
 
-Vec3 Vec3::invert() {
+Vec3 Vec3::invert() const {
 	return { -data[0], -data[1], -data[2] };
 }
 
@@ -51,11 +49,9 @@ float Vec3::g() const { return data[1]; }
 float Vec3::b() const { return data[2]; }
 
 const std::string Vec3::toString() const {
-
 	std::stringstream ss;
 	ss << "(" << data[0] << ", " << data[1] << ", " << data[2] << ")";
 	return ss.str();
-
 }
 
 Vec3 Vec3::operator+(const Vec3& other) const {
