@@ -30,7 +30,7 @@ const std::optional<Hit> Sphere::intersect(const Ray& ray, float near, float far
 
 const Hit Sphere::getIntersection(const Ray& ray, float t) const {
 	const Vec3 intersection{ ray.point(t) };
-	return Hit{ intersection, (m_center.invert() + intersection) / m_radius };
+	return Hit{ t, intersection, (m_center.invert() + intersection) / m_radius };
 }
 
 const std::optional<std::pair<float, float>> solveQuadratic(const float& half_b, const float& c) {

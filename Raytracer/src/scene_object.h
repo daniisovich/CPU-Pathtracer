@@ -7,6 +7,7 @@
 
 struct Hit {
 	// TODO: temporary struct
+	float t;
 	Vec3 intersection;
 	Vec3 normal;
 };
@@ -14,6 +15,6 @@ struct Hit {
 class SceneObject {
 
 public:
-	virtual const std::optional<Hit> intersect(const Ray& ray) const = 0;
+	virtual const std::optional<Hit> intersect(const Ray& ray, float near, float far) const = 0;
 
 };

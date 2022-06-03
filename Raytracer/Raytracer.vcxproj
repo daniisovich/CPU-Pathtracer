@@ -149,6 +149,7 @@
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ray.cpp" />
+    <ClCompile Include="src\scene.cpp" />
     <ClCompile Include="src\sphere.cpp" />
     <ClCompile Include="src\vec3.cpp" />
   </ItemGroup>
