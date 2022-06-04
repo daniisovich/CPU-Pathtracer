@@ -31,7 +31,7 @@ public:
 
 	friend Vec3 operator*(const Vec3& vec, float val);
 	friend Vec3 operator*(float val, const Vec3& vec);
-	Vec3 operator/(float val) const;
+	friend Vec3 operator/(const Vec3& vec, float val);
 
 	float x() const;
 	float y() const;
@@ -42,7 +42,6 @@ public:
 	float b() const;
 
 	friend std::ostream& operator<<(std::ostream& os, const Vec3& vec);
-	const std::string toString() const;
 
 private:
 

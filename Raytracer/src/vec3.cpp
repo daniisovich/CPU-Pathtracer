@@ -3,15 +3,21 @@
 #include <sstream>
 
 
+Vec3::Vec3() : m_data{ 0, 0, 0 } {}
+Vec3::Vec3(float x, float y, float z) : m_data{ x, y, z } {}
+Vec3::Vec3(const Vec3& other) : m_data{ other.m_data } {}
+
 Vec3 Vec3::normalize(const Vec3& vec) {
 	return vec / vec.length();
 }
 
 void Vec3::normalize() {
+
 	float len{ length() };
 	m_data[0] /= len;
 	m_data[1] /= len;
 	m_data[2] /= len;
+
 }
 
 float Vec3::dot(const Vec3& a, const Vec3& b) {
@@ -29,10 +35,12 @@ Vec3 Vec3::reflect(const Vec3& vec, const Vec3& normal) {
 }
 
 Vec3 Vec3::refract(const Vec3& vec, const Vec3& normal, float index) {
+
 	Vec3 l{ normalize(vec) };
 	float costheta1{ Vec3::dot(l, normal.invert()) };
 	float costheta2 = sqrt(1 - index * index * (1 - costheta1 * costheta1));
 	return index * l + (index * costheta1 - costheta2) * normal;
+
 }
 
 Vec3 Vec3::invert() const {
@@ -47,10 +55,6 @@ float Vec3::sq_length() const {
 	return m_data[0] * m_data[0] + m_data[1] * m_data[1] + m_data[2] * m_data[2];
 }
 
-Vec3::Vec3() : m_data{ 0, 0, 0 } {}
-Vec3::Vec3(float x, float y, float z) : m_data{ x, y, z } {}
-Vec3::Vec3(const Vec3& other) : m_data{ other.m_data } {}
-
 float Vec3::x() const { return m_data[0]; }
 float Vec3::y() const { return m_data[1]; }
 float Vec3::z() const { return m_data[2]; }
@@ -60,14 +64,8 @@ float Vec3::g() const { return m_data[1]; }
 float Vec3::b() const { return m_data[2]; }
 
 std::ostream& operator<<(std::ostream& os, const Vec3& vec) {
-	os << vec.toString();
+	os << "(" << vec.m_data[0] << ", " << vec.m_data[1] << ", " << vec.m_data[2] << ")";
 	return os;
-}
-
-const std::string Vec3::toString() const {
-	std::stringstream ss;
-	ss << "(" << m_data[0] << ", " << m_data[1] << ", " << m_data[2] << ")";
-	return ss.str();
 }
 
 Vec3 Vec3::operator+(const Vec3& other) const {
@@ -94,6 +92,6 @@ Vec3 operator*(float val, const Vec3& vec) {
 	return vec * val;
 }
 
-Vec3 Vec3::operator/(float val) const {
-	return { m_data[0] / val, m_data[1] / val, m_data[2] / val };
+Vec3 operator/(const Vec3& vec, float val) {
+	return vec * (1 / val);
 }
