@@ -11,10 +11,9 @@ std::optional<Hit> Scene::intersect(const Ray& ray, float near, float far) const
 	for (size_t i{ 0 }; i < objects.size(); ++i) {
 
 		auto result{ objects[i]->intersect(ray, near, far) };
-		if (!result.has_value()) continue;
+		if (!result.has_value() || (intersection.has_value() && result.value().t >= intersection.value().t)) continue;
 
-		if (intersection.has_value() && result.value().t < intersection.value().t)
-			intersection = result;
+		intersection = result;
 
 	}
 
