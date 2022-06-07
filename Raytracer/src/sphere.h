@@ -9,7 +9,7 @@ class Sphere : public SceneObject {
 
 public:
 
-	const std::optional<Hit> intersect(const Ray& ray, float near, float far) const;
+	const std::optional<Hit> intersect(const Ray& ray, float near, float far) const override;
 
 private:
 
