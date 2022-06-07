@@ -11,7 +11,7 @@ Camera::Camera(const Vec3& position, const Vec3& look_at, const Vec3& up, float 
 	// view_dir and right are orthogonal so the cross product between two unit vectors is a unit vector
 	Vec3 orth_up{ Vec3::cross(view_dir, right) };
 
-	float horizontal_fov_rad{ horizontal_fov_deg / 180 * M_PI };
+	float horizontal_fov_rad{ horizontal_fov_deg / 180 * float(M_PI) };
 	float viewport_width{ 2 * tanf(horizontal_fov_rad / 2) };
 	float viewport_height{ viewport_width / aspect_ratio };
 
