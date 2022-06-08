@@ -4,12 +4,14 @@
 #include <math.h>
 
 
+Camera::Camera(float horizontal_fov_deg, float aspect_ratio) : Camera(Vec3{ 0.0f, 0.0f, 5.0f }, Vec3{ 0.0f, 0.0f, 0.0f }, Vec3{ 0.0f, 1.0f, 0.0f }, horizontal_fov_deg, aspect_ratio) { }
+
 Camera::Camera(const Vec3& position, const Vec3& look_at, const Vec3& up, float horizontal_fov_deg, float aspect_ratio) : m_position{ position } {
 
 	Vec3 view_dir{ Vec3::normalize(look_at - m_position) };
 	Vec3 right{ Vec3::normalize(Vec3::cross(view_dir, up)) };
 	// view_dir and right are orthogonal so the cross product between two unit vectors is a unit vector
-	Vec3 orth_up{ Vec3::cross(view_dir, right) };
+	Vec3 orth_up{ Vec3::cross(right, view_dir) };
 
 	float horizontal_fov_rad{ horizontal_fov_deg / 180 * float(M_PI) };
 	float viewport_width{ 2 * tanf(horizontal_fov_rad / 2) };
