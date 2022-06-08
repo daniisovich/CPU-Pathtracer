@@ -3,11 +3,11 @@
 
 Scene::Scene(const std::vector<std::shared_ptr<SceneObject>>& objects) : m_objects{ objects } { }
 
-void Scene::addObject(const std::shared_ptr<SceneObject> object) {
+void Scene::add(const std::shared_ptr<SceneObject>& object) {
 	m_objects.push_back(object);
 }
 
-void Scene::addObjects(const std::vector<std::shared_ptr<SceneObject>>& objects) {
+void Scene::add(const std::vector<std::shared_ptr<SceneObject>>& objects) {
 	
 	m_objects.reserve(m_objects.size() + objects.size());
 	for (const auto& object : objects) {
