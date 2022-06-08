@@ -4,6 +4,8 @@
 const std::optional<std::pair<float, float>> solveQuadratic(const float& half_b, const float& c);
 
 
+Sphere::Sphere(const Vec3& center, float radius) : m_center{ center }, m_radius{ radius } { }
+
 const std::optional<Hit> Sphere::intersect(const Ray& ray, float near, float far) const {
 
 	const Vec3 oc{ ray.origin() - m_center };
