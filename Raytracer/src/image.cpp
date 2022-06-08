@@ -60,7 +60,7 @@ void Image::writeToBMP(const std::string& filename) const {
 		uint32_t important_colors{ 0 };
 	} info_header;
 	info_header.width = m_width;
-	info_header.height = m_height; // maybe -m_height
+	info_header.height = m_height;
 
 	output.write((char*)&info_header, info_header.size);
 
