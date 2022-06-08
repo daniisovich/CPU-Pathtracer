@@ -4,7 +4,7 @@
 const std::optional<std::pair<float, float>> solveQuadratic(const float& half_b, const float& c);
 
 
-Sphere::Sphere(const Vec3& center, float radius) : m_center{ center }, m_radius{ radius } { }
+Sphere::Sphere(const Vec3& center, float radius, const std::shared_ptr<Material>& material) : m_center{ center }, m_radius{ radius }, m_material{ material } { }
 
 const std::optional<Hit> Sphere::intersect(const Ray& ray, float near, float far) const {
 
@@ -34,7 +34,7 @@ const Hit Sphere::getIntersection(const Ray& ray, float t) const {
 
 	const Vec3 intersection{ ray.point(t) };
 	Vec3 out_normal{ (m_center.invert() + intersection) / m_radius };
-	Hit hit{ t, intersection, out_normal };
+	Hit hit{ t, intersection, m_material };
 	hit.set_normal(ray.direction(), out_normal);
 	return hit;
 

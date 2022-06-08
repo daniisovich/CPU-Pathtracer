@@ -148,8 +148,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\camera.cpp" />
+    <ClCompile Include="src\directional_light.cpp" />
     <ClCompile Include="src\image.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\material.cpp" />
+    <ClCompile Include="src\point_light.cpp" />
     <ClCompile Include="src\ray.cpp" />
     <ClCompile Include="src\scene.cpp" />
     <ClCompile Include="src\sphere.cpp" />
@@ -157,8 +160,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\camera.h" />
+    <ClInclude Include="src\directional_light.h" />
     <ClInclude Include="src\image.h" />
     <ClInclude Include="src\lightsource.h" />
+    <ClInclude Include="src\material.h" />
+    <ClInclude Include="src\point_light.h" />
     <ClInclude Include="src\ray.h" />
     <ClInclude Include="src\scene.h" />
     <ClInclude Include="src\scene_object.h" />
