@@ -24,6 +24,8 @@ public:
 	float length() const;
 	float sq_length() const;
 
+	static Vec3 clamp(const Vec3& vec, float lower_bound, float upper_bound);
+
 	Vec3 operator+(const Vec3& other) const;
 	Vec3 operator-(const Vec3& other) const;
 	Vec3 operator*(const Vec3& other) const;

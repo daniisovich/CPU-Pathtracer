@@ -1,6 +1,7 @@
 #include "vec3.h"
 
 #include <sstream>
+#include <algorithm>
 
 
 Vec3::Vec3() : m_data{ 0, 0, 0 } {}
@@ -53,6 +54,12 @@ float Vec3::length() const {
 
 float Vec3::sq_length() const {
 	return m_data[0] * m_data[0] + m_data[1] * m_data[1] + m_data[2] * m_data[2];
+}
+
+Vec3 Vec3::clamp(const Vec3& vec, float lower_bound, float upper_bound) {
+	return { std::clamp(vec.m_data[0], lower_bound, upper_bound),
+			 std::clamp(vec.m_data[1], lower_bound, upper_bound),
+			 std::clamp(vec.m_data[2], lower_bound, upper_bound) };
 }
 
 float Vec3::x() const { return m_data[0]; }
