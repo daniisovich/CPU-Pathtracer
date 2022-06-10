@@ -67,7 +67,7 @@ void Image::writeToBMP(const std::string& filename) const {
 	std::vector<uint8_t> pixel_data(m_width * m_height * components);
 	for (size_t i{ 0 }; i < m_data.size(); ++i) {
 
-		const Vec3 pixel_color{ 256 * Vec3::clamp(m_data[i], 0.0f, 0.999f) };
+		const Vec3 pixel_color{ 255 * m_data[i] };
 		pixel_data[3 * i + 0] = uint8_t(pixel_color.b());
 		pixel_data[3 * i + 1] = uint8_t(pixel_color.g());
 		pixel_data[3 * i + 2] = uint8_t(pixel_color.r());
