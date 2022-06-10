@@ -17,7 +17,7 @@ struct Hit {
 
 	inline void set_normal(const Vec3& ray_direction, const Vec3& out_normal) {
 		front_face = Vec3::dot(ray_direction, out_normal) < 0;
-		normal = front_face ? out_normal : out_normal.invert();
+		normal = front_face ? out_normal : -out_normal;
 	}
 };
 

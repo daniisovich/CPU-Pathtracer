@@ -4,7 +4,8 @@
 #include <algorithm>
 
 
-Vec3::Vec3() : m_data{ 0, 0, 0 } {}
+Vec3::Vec3() : Vec3(0.0f) {}
+Vec3::Vec3(float val) : Vec3(val, val, val) {}
 Vec3::Vec3(float x, float y, float z) : m_data{ x, y, z } {}
 Vec3::Vec3(const Vec3& other) : m_data{ other.m_data } {}
 
@@ -38,14 +39,10 @@ Vec3 Vec3::reflect(const Vec3& vec, const Vec3& normal) {
 Vec3 Vec3::refract(const Vec3& vec, const Vec3& normal, float index) {
 
 	Vec3 l{ normalize(vec) };
-	float costheta1{ Vec3::dot(l, normal.invert()) };
+	float costheta1{ Vec3::dot(l, -normal) };
 	float costheta2 = sqrt(1 - index * index * (1 - costheta1 * costheta1));
 	return index * l + (index * costheta1 - costheta2) * normal;
 
-}
-
-Vec3 Vec3::invert() const {
-	return { -m_data[0], -m_data[1], -m_data[2] };
 }
 
 float Vec3::length() const {
@@ -73,6 +70,10 @@ float Vec3::b() const { return m_data[2]; }
 std::ostream& operator<<(std::ostream& os, const Vec3& vec) {
 	os << "(" << vec.m_data[0] << ", " << vec.m_data[1] << ", " << vec.m_data[2] << ")";
 	return os;
+}
+
+Vec3 Vec3::operator-() const {
+	return { -m_data[0], -m_data[1], -m_data[2] };
 }
 
 Vec3 Vec3::operator+(const Vec3& other) const {
