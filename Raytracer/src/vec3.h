@@ -43,6 +43,8 @@ public:
 	Vec3 operator*(const Vec3& other) const;
 	Vec3 operator/(const Vec3& other) const;
 
+	Vec3& operator+=(const Vec3& other);
+
 	friend Vec3 operator*(const Vec3& vec, float val);
 	friend Vec3 operator*(float val, const Vec3& vec);
 	friend Vec3 operator/(const Vec3& vec, float val);

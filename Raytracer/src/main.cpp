@@ -1,5 +1,6 @@
 #include <iostream>
 #include <memory>
+#include <random>
 
 #include "image.h"
 #include "camera.h"
@@ -31,6 +32,15 @@ Vec3 traceRay(const Ray& ray, const Scene& scene, int num_bounces, float epsilon
 
 }
 
+float random(float min = 0.0f, float max = 1.0f) {
+
+	static std::mt19937 generator(std::random_device{}());
+	static std::uniform_real_distribution<float> distribution{ min, max };
+
+	return distribution(generator);
+
+}
+
 int main() {
 
 	const float aspect_ratio{ 16.0f / 9 };
@@ -49,10 +59,15 @@ int main() {
 	scene.add(std::make_shared<Sphere>(Sphere{ Vec3{ 0.0f, 0.0f, -1.0f }, 0.5f, material1 }));
 	scene.add(std::make_shared<Sphere>(Sphere{ Vec3{ 1.0f, 0.0f, -1.0f }, 0.5f, material2 }));
 
+	int num_samples{ 4 }, num_bounces{ 1 };
 	for (int y{ 0 }; y < img.height(); ++y) {
 		for (int x{ 0 }; x < img.width(); ++x) {
-			const Ray ray{ cam.spawnRay(float(x) / (img.width() - 1), float(y) / (img.height() - 1)) };
-			img.setPixel(x, y, traceRay(ray, scene, 1));
+			Vec3 accumulated_color{};
+			for (int s{ 0 }; s < num_samples; ++s) {
+				const Ray ray{ cam.spawnRay((x + random()) / img.width(), (y + random()) / img.height())};
+				accumulated_color += traceRay(ray, scene, num_bounces);
+			}
+			img.setPixel(x, y, accumulated_color / float(num_samples));
 		}
 	}
 

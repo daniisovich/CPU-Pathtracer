@@ -14,12 +14,7 @@ Vec3 Vec3::normalize(const Vec3& vec) {
 }
 
 void Vec3::normalize() {
-
-	float len{ length() };
-	m_data[0] /= len;
-	m_data[1] /= len;
-	m_data[2] /= len;
-
+	*this = *this / this->length();
 }
 
 float Vec3::dot(const Vec3& a, const Vec3& b) {
@@ -90,6 +85,11 @@ Vec3 Vec3::operator*(const Vec3& other) const {
 
 Vec3 Vec3::operator/(const Vec3& other) const {
 	return { m_data[0] / other.m_data[0], m_data[1] / other.m_data[1], m_data[2] / other.m_data[2] };
+}
+
+Vec3& Vec3::operator+=(const Vec3& other) {
+	*this = *this + other;
+	return *this;
 }
 
 Vec3 operator*(const Vec3& vec, float val) {
