@@ -148,6 +148,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\camera.cpp" />
+    <ClCompile Include="src\utility.cpp" />
     <ClCompile Include="src\directional_light.cpp" />
     <ClCompile Include="src\image.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -160,6 +161,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\camera.h" />
+    <ClInclude Include="src\utility.h" />
     <ClInclude Include="src\directional_light.h" />
     <ClInclude Include="src\image.h" />
     <ClInclude Include="src\lightsource.h" />
