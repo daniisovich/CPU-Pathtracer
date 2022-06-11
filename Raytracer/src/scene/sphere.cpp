@@ -34,7 +34,7 @@ const std::optional<Hit> Sphere::intersect(const Ray& ray, float near, float far
 const Hit Sphere::getIntersection(const Ray& ray, float t) const {
 
 	const Vec3 intersection{ ray.point(t) };
-	const Vec3 out_normal{ (intersection - m_center) / m_radius };
+	const Vec3 out_normal{ Vec3::normalize(intersection - m_center) };
 	Hit hit{ t, intersection, m_material };
 	hit.set_normal(ray.direction(), out_normal);
 	return hit;
