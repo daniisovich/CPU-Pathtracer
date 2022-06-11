@@ -28,6 +28,8 @@ public:
 
 	static Vec3 clamp(const Vec3& vec, float lower_bound, float upper_bound);
 
+	static Vec3 random(float min = 0.0f, float max = 1.0f);
+
 	float x() const;
 	float y() const;
 	float z() const;

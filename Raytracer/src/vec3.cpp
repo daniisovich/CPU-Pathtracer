@@ -3,6 +3,8 @@
 #include <sstream>
 #include <algorithm>
 
+#include "utility.h"
+
 
 Vec3::Vec3() : Vec3(0.0f) {}
 Vec3::Vec3(float val) : Vec3(val, val, val) {}
@@ -102,4 +104,8 @@ Vec3 operator*(float val, const Vec3& vec) {
 
 Vec3 operator/(const Vec3& vec, float val) {
 	return vec * (1 / val);
+}
+
+Vec3 Vec3::random(float min, float max) {
+	return { utility::randomScalar(min, max), utility::randomScalar(min, max), utility::randomScalar(min, max) };
 }
