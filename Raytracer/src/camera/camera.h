@@ -1,7 +1,7 @@
 #pragma once
 
-#include "vec3.h"
-#include "ray.h"
+#include "../core/vec3.h"
+#include "../core/ray.h"
 
 
 struct Viewport {

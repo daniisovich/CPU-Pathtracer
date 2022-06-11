@@ -2,12 +2,12 @@
 #include <memory>
 #include <random>
 
-#include "utility.h"
-#include "image.h"
-#include "camera.h"
-#include "scene.h"
-#include "sphere.h"
-#include "material.h"
+#include "utility/utility.h"
+#include "utility/image.h"
+#include "scene/scene.h"
+#include "scene/sphere.h"
+#include "scene/material.h"
+#include "camera/camera.h"
 
 
 Vec3 gradientColor(const Vec3& direction, const Vec3& lower_color = { 1.0f, 1.0f, 1.0f }, const Vec3& upper_color = { 0.5f, 0.7f, 1.0f }) {

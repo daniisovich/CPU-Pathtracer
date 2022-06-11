@@ -18,72 +18,72 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\vec3.cpp">
+    <ClCompile Include="src\core\vec3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\sphere.cpp">
+    <ClCompile Include="src\scene\sphere.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\ray.cpp">
+    <ClCompile Include="src\core\ray.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\scene.cpp">
+    <ClCompile Include="src\scene\scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\camera.cpp">
+    <ClCompile Include="src\camera\camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\image.cpp">
+    <ClCompile Include="src\utility\image.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\directional_light.cpp">
+    <ClCompile Include="src\scene\directional_light.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\point_light.cpp">
+    <ClCompile Include="src\scene\point_light.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\material.cpp">
+    <ClCompile Include="src\scene\material.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\utility.cpp">
+    <ClCompile Include="src\utility\utility.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\scene.h">
+    <ClInclude Include="src\scene\scene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\ray.h">
+    <ClInclude Include="src\core\ray.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\camera.h">
+    <ClInclude Include="src\camera\camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\sphere.h">
+    <ClInclude Include="src\scene\sphere.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\scene_object.h">
+    <ClInclude Include="src\scene\scene_object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\vec3.h">
+    <ClInclude Include="src\core\vec3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\lightsource.h">
+    <ClInclude Include="src\scene\lightsource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\image.h">
+    <ClInclude Include="src\utility\image.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\directional_light.h">
+    <ClInclude Include="src\scene\directional_light.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\point_light.h">
+    <ClInclude Include="src\scene\point_light.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\material.h">
+    <ClInclude Include="src\scene\material.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\utility.h">
+    <ClInclude Include="src\utility\utility.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

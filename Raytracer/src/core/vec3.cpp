@@ -3,7 +3,7 @@
 #include <sstream>
 #include <algorithm>
 
-#include "utility.h"
+#include "../utility/utility.h"
 
 
 Vec3::Vec3() : Vec3(0.0f) {}

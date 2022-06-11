@@ -2,7 +2,7 @@
 
 #include <optional>
 
-#include "ray.h"
+#include "../core/ray.h"
 #include "material.h"
 
 
