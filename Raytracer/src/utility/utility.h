@@ -11,4 +11,6 @@ namespace utility {
 	Vec3 randomInSphere(float radius = 1.0f);
 	Vec3 randomInHemisphere(const Vec3& normal);
 
+	const float infinity{ std::numeric_limits<float>::infinity() };
+
 }
