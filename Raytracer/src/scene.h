@@ -23,3 +23,6 @@ private:
 	std::vector<std::shared_ptr<SceneObject>> m_objects{};
 
 };
+
+
+Scene demoScene();

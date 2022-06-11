@@ -1,5 +1,7 @@
 #include "scene.h"
 
+#include "sphere.h"
+
 
 Scene::Scene(const std::vector<std::shared_ptr<SceneObject>>& objects) : m_objects{ objects } { }
 
@@ -29,5 +31,17 @@ std::optional<Hit> Scene::intersect(const Ray& ray, float near, float far) const
 	}
 
 	return intersection;
+
+}
+
+Scene demoScene() {
+
+	auto material = std::make_shared<Material>(Material{ Vec3{ 0.0f, 1.0f, 0.0f }, 0.8f });
+
+	Scene scene;
+	scene.add(std::make_shared<Sphere>(Sphere{ Vec3{ 0.0f, 0.0f, -1.0f }, 0.5f, material }));
+	scene.add(std::make_shared<Sphere>(Sphere{ Vec3{0.0f, -100.5f, -1.0f }, 100.0f, material }));
+
+	return scene;
 
 }
