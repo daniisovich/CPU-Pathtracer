@@ -56,6 +56,12 @@ Vec3 Vec3::clamp(const Vec3& vec, float lower_bound, float upper_bound) {
 			 std::clamp(vec.m_data[2], lower_bound, upper_bound) };
 }
 
+Vec3 Vec3::gammaCorrection(const Vec3& vec, int gamma) {
+	return { std::pow(vec.m_data[0], 1 / float(gamma)),
+			 std::pow(vec.m_data[1], 1 / float(gamma)),
+			 std::pow(vec.m_data[2], 1 / float(gamma)) };
+}
+
 float Vec3::x() const { return m_data[0]; }
 float Vec3::y() const { return m_data[1]; }
 float Vec3::z() const { return m_data[2]; }

@@ -27,7 +27,7 @@ public:
 	static Vec3 refract(const Vec3& vec, const Vec3& normal, float index);
 
 	static Vec3 clamp(const Vec3& vec, float lower_bound, float upper_bound);
-
+	static Vec3 gammaCorrection(const Vec3& vec, int gamma);
 	static Vec3 random(float min = 0.0f, float max = 1.0f);
 
 	float x() const;
