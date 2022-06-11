@@ -161,6 +161,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\camera\camera.h" />
+    <ClInclude Include="src\core\core.h" />
     <ClInclude Include="src\utility\utility.h" />
     <ClInclude Include="src\scene\directional_light.h" />
     <ClInclude Include="src\utility\image.h" />

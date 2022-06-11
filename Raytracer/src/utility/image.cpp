@@ -5,6 +5,8 @@
 
 #include <algorithm>
 
+#include "../core/core.h"
+
 
 Image::Image(int width, int height) : m_width{ width }, m_height{ height }, m_data(width * height, Vec3{}) {}
 
@@ -13,10 +15,7 @@ int Image::height() const { return m_height; }
 
 void Image::setPixel(int x, int y, const Vec3& color) {
 	
-	if (x < 0 || x >= m_width || y < 0 || y >= m_height) {
-		std::cerr << "Invalid coordinates (" << x << ", " << y << ")" << std::endl;
-		return;
-	}
+	assertMessage(x >= 0 && x < m_width && y >= 0 && y < m_height, "Invalid coordinates");
 
 	int flattened{ flattenIndex(x, y) };
 	m_data[flattened] = color;
@@ -44,7 +43,7 @@ void Image::writeToBMP(const std::string& filename) const {
 		uint32_t offset_data{ 54 };
 	} file_header;
 	file_header.file_size = 54 + m_width * m_height * components;
-	const int file_header_size{4 + 4 + 4 };
+	const int file_header_size{ 4 + 4 + 4 };
 
 	output.write((char*)&file_header, file_header_size);
 
