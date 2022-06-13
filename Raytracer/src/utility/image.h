@@ -16,7 +16,7 @@ public:
 
 	void setPixel(int x, int y, const Vec3& color);
 
-	void writeToBMP(const std::string& filename) const;
+	void writeToBMP(const std::string& filename, float gamma) const;
 
 private:
 
