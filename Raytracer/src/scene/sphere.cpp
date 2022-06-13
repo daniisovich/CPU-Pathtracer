@@ -6,7 +6,7 @@ const std::optional<std::pair<float, float>> solveQuadratic(float a, float half_
 
 Sphere::Sphere(const Vec3& center, float radius, const std::shared_ptr<Material>& material) : m_center{ center }, m_radius{ radius }, m_material{ material } { }
 
-const std::optional<Hit> Sphere::intersect(const Ray& ray, float near, float far) const {
+const std::optional<Intersection> Sphere::intersect(const Ray& ray, float near, float far) const {
 
 	const Vec3 co{ ray.origin() - m_center };
 	const float a{ ray.direction().sq_length() };
@@ -31,13 +31,12 @@ const std::optional<Hit> Sphere::intersect(const Ray& ray, float near, float far
 
 }
 
-const Hit Sphere::getIntersection(const Ray& ray, float t) const {
+const Intersection Sphere::getIntersection(const Ray& ray, float t) const {
 
-	const Vec3 intersection{ ray.point(t) };
-	const Vec3 out_normal{ Vec3::normalize(intersection - m_center) };
-	Hit hit{ t, intersection, m_material };
-	hit.set_normal(ray.direction(), out_normal);
-	return hit;
+	const Vec3 position{ ray.point(t) };
+	const Vec3 out_normal{ Vec3::normalize(position - m_center) };
+	Intersection intersection{ t, position, ray.direction(), out_normal, m_material };
+	return intersection;
 
 }
 

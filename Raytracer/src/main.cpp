@@ -24,10 +24,14 @@ Vec3 traceRay(const Ray& ray, const Scene& scene, int num_bounces, float epsilon
 	const auto intersection{ scene.intersect(ray, epsilon, utility::infinity) };
 	if (!intersection.has_value()) return gradientColor(ray.direction());
 
-	const auto hit{ intersection.value() };
+	const Intersection hit{ intersection.value() };
+	return hit.lighting(scene.lights());
 
-	auto target_dir{ utility::randomInHemisphere(hit.normal) };
-	return 0.5 * traceRay(Ray{ hit.intersection, target_dir }, scene, num_bounces - 1, epsilon);
+	//const Vec3 target_dir{ utility::randomInHemisphere(hit.normal) };
+	auto [color, reflection] = hit.material()->scatter(ray.direction(), hit.normal());
+	if (!reflection.has_value()) return color;
+
+	return color * traceRay(Ray{ hit.position(), reflection.value()}, scene, num_bounces - 1, epsilon);
 
 }
 
@@ -43,19 +47,21 @@ int main() {
 
 	Scene scene{ demoScene() };
 
-	int num_samples{ 100 }, num_bounces{ 50 };
+	const int num_samples{ 100 }, num_bounces{ 50 };
 	for (int y{ 0 }; y < img.height(); ++y) {
 		for (int x{ 0 }; x < img.width(); ++x) {
 			Vec3 accumulated_color{};
 			for (int s{ 0 }; s < num_samples; ++s) {
-				const Ray ray{ cam.spawnRay(float(x) / img.width(), float(y) / img.height())};
+				const Ray ray{ cam.spawnRay((x + utility::randomScalar()) / img.width(), (y + utility::randomScalar()) / img.height())};
 				accumulated_color += traceRay(ray, scene, num_bounces);
 			}
 			img.setPixel(x, y, accumulated_color / float(num_samples));
 		}
 	}
 
-	img.writeToBMP("result");
+	const int gamma{ 1 };
+	img.writeToBMP("result", gamma);
+
 	return EXIT_SUCCESS;
 
 }

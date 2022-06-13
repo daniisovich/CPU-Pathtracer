@@ -3,7 +3,7 @@
 #include "lightsource.h"
 
 
-class DirectionalLight : Lightsource {
+class DirectionalLight : public Lightsource {
 
 public:
 
