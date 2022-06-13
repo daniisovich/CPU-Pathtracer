@@ -13,4 +13,6 @@ namespace utility {
 
 	const float infinity{ std::numeric_limits<float>::infinity() };
 
+	Vec3 brdfHemisphere(const Vec3& ray_direction, const Vec3& normal);
+
 }

@@ -29,4 +29,8 @@ namespace utility {
 
 	}
 
+	Vec3 brdfHemisphere(const Vec3& ray_direction, const Vec3& normal) {
+		return randomInHemisphere(normal);
+	}
+
 }
