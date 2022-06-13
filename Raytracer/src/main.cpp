@@ -25,10 +25,9 @@ Vec3 traceRay(const Ray& ray, const Scene& scene, int num_bounces, float epsilon
 	if (!intersection.has_value()) return gradientColor(ray.direction());
 
 	const Intersection hit{ intersection.value() };
-	return hit.lighting(scene.lights());
 
-	//const Vec3 target_dir{ utility::randomInHemisphere(hit.normal) };
-	auto [color, reflection] = hit.material()->scatter(ray.direction(), hit.normal());
+	auto [old, reflection] = hit.material()->scatter(ray.direction(), hit.normal());
+	Vec3 color{ hit.lighting(scene.lights()) };
 	if (!reflection.has_value()) return color;
 
 	return color * traceRay(Ray{ hit.position(), reflection.value()}, scene, num_bounces - 1, epsilon);

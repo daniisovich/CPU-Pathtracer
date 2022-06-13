@@ -55,17 +55,17 @@ Scene demoScene() {
 
 	auto material_ground = std::make_shared<Material>(Material{ Vec3{ 0.8f, 0.8f, 0.0f }, 0.5f, 0.0f, utility::brdfHemisphere });
 	auto material_center = std::make_shared<Material>(Material{ Vec3{ 0.7f, 0.3f, 0.3f }, 0.5f, 0.0f, utility::brdfHemisphere });
-	//auto material_left   = std::make_shared<Material>(Material{ Vec3{ 0.8f, 0.8f, 0.8f }, 0.5f, 0.3f, Vec3::reflect });
-	//auto material_right  = std::make_shared<Material>(Material{ Vec3{ 0.8f, 0.6f, 0.2f }, 0.5f, 1.0f, Vec3::reflect });
+	auto material_left   = std::make_shared<Material>(Material{ Vec3{ 0.8f, 0.8f, 0.8f }, 0.5f, 0.3f, Vec3::reflect });
+	auto material_right  = std::make_shared<Material>(Material{ Vec3{ 0.8f, 0.6f, 0.2f }, 0.5f, 1.0f, Vec3::reflect });
 
 	Scene scene;
 	
-	scene.add(std::make_shared<PointLight>(PointLight(Vec3{0.0f, 3.0f, -0.0f})));
+	scene.add(std::make_shared<PointLight>(PointLight(Vec3{0.3f, 0.0f, -0.0f})));
 
 	scene.add(std::make_shared<Sphere>(Sphere{ Vec3{0.0f, -100.5f, -1.0f }, 100.0f, material_ground }));
 	scene.add(std::make_shared<Sphere>(Sphere{ Vec3{ 0.0f, 0.0f, -1.0f }, 0.5f, material_center }));
-	//scene.add(std::make_shared<Sphere>(Sphere{ Vec3{ -1.0f, 0.0f, -1.0f }, 0.5f, material_left }));
-	//scene.add(std::make_shared<Sphere>(Sphere{ Vec3{ 1.0f, 0.0f, -1.0f }, 0.5f, material_right }));
+	scene.add(std::make_shared<Sphere>(Sphere{ Vec3{ -1.0f, 0.0f, -1.0f }, 0.5f, material_left }));
+	scene.add(std::make_shared<Sphere>(Sphere{ Vec3{ 1.0f, 0.0f, -1.0f }, 0.5f, material_right }));
 
 	return scene;
 
