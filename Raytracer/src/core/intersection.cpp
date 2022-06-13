@@ -21,11 +21,11 @@ Vec3 Intersection::lighting(const std::vector<std::shared_ptr<Lightsource>>& lig
 		if (weight < 0.0f) continue;
 		diffuse += 0.3f * weight * lightColor;
 
-		const Vec3 reflectedLight{ Vec3::reflect(lightDir, m_normal) };
+		const Vec3 reflectedLight{ Vec3::reflect(-lightDir, m_normal) };
 		assert(reflectedLight == Vec3::normalize(reflectedLight));
 		weight = Vec3::dot(reflectedLight, m_view_dir);
 		if (weight < 0.0f) continue;
-		specular += 0.2f * std::powf(weight, 50) * lightColor;
+		specular += 0.2f * std::powf(weight, 10) * lightColor;
 
 	}
 
