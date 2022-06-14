@@ -33,4 +33,12 @@ namespace utility {
 		return randomInHemisphere(normal);
 	}
 
+	Vec3 gradientColor(const Vec3& direction, const Vec3& lower_color, const Vec3& upper_color) {
+
+		const Vec3 normalized_direction{ Vec3::normalize(direction) };
+		const float t{ (normalized_direction.y() + 1.0f) * 0.5f };
+		return lower_color * (1.0f - t) + upper_color * t;
+
+	}
+
 }
