@@ -17,7 +17,6 @@ private:
 
 	Vec3 m_center;
 	float m_radius;
-	// temporary as material
 	std::shared_ptr<Material> m_material;
 
 };
