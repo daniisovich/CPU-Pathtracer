@@ -95,5 +95,8 @@
     <ClInclude Include="src\core\intersection.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\scene\scene.fwd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

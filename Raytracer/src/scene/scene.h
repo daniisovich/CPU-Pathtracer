@@ -1,5 +1,7 @@
 #pragma once
 
+#include "scene.fwd.h"
+
 #include <memory>
 #include <vector>
 

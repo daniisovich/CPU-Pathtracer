@@ -9,28 +9,20 @@
 #include "camera/camera.h"
 
 
-Vec3 gradientColor(const Vec3& direction, const Vec3& lower_color = { 1.0f, 1.0f, 1.0f }, const Vec3& upper_color = { 0.5f, 0.7f, 1.0f }) {
-
-	const Vec3 normalized_direction{ Vec3::normalize(direction) };
-	const float t{ (normalized_direction.y() + 1.0f) * 0.5f };
-	return lower_color * (1.0f - t) + upper_color * t;
-
-}
-
 Vec3 traceRay(const Ray& ray, const Scene& scene, int num_bounces, float epsilon = 0.001f) {
 
 	if (num_bounces <= 0) return {};
 
 	const auto intersection{ scene.intersect(ray, epsilon, utility::infinity) };
-	if (!intersection.has_value()) return gradientColor(ray.direction());
+	if (!intersection.has_value()) return utility::gradientColor(ray.direction());
 
 	const Intersection hit{ intersection.value() };
 
-	auto [old, reflection] = hit.material()->scatter(ray.direction(), hit.normal());
-	Vec3 color{ hit.lighting(scene.lights()) };
+	const auto reflection = hit.material()->scatter(ray.direction(), hit.normal());
+	Vec3 color{ hit.lighting(scene, epsilon)};
 	if (!reflection.has_value()) return color;
 
-	return color * traceRay(Ray{ hit.position(), reflection.value()}, scene, num_bounces - 1, epsilon);
+	return color * traceRay(Ray{ hit.position(), reflection.value() }, scene, num_bounces - 1, epsilon);
 
 }
 
@@ -39,10 +31,12 @@ int main() {
 	const float aspect_ratio{ 16.0f / 9 };
 	const int width{ 1280 };
 	const int height{ int(width / aspect_ratio) };
-	const float horizontal_fov{ 120.0f };
+	const float horizontal_fov{ 110.0f };
 
 	Image img{ width, height };
-	Camera cam{ horizontal_fov, aspect_ratio };
+
+	const Vec3 camera_position{ 0.0f, 0.0f, 3.0f }, camera_look_at{ 0.0f, 0.0f, -1.0f }, camera_up{ 0.0f, 1.0f, 0.0f };
+	Camera camera{ camera_position, camera_look_at, camera_up, horizontal_fov, aspect_ratio };
 
 	Scene scene{ demoScene() };
 
@@ -51,7 +45,7 @@ int main() {
 		for (int x{ 0 }; x < img.width(); ++x) {
 			Vec3 accumulated_color{};
 			for (int s{ 0 }; s < num_samples; ++s) {
-				const Ray ray{ cam.spawnRay((x + utility::randomScalar()) / img.width(), (y + utility::randomScalar()) / img.height())};
+				const Ray ray{ camera.spawnRay((x + utility::randomScalar()) / img.width(), (y + utility::randomScalar()) / img.height())};
 				accumulated_color += traceRay(ray, scene, num_bounces);
 			}
 			img.setPixel(x, y, accumulated_color / float(num_samples));

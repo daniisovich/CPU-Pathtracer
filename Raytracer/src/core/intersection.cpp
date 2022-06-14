@@ -1,6 +1,7 @@
 #include "intersection.h"
 
 #include "core.h"
+#include "../scene/scene.h"
 
 
 Intersection::Intersection(float t, const Vec3& position, const Vec3& ray_direction, const Vec3& out_normal, const std::shared_ptr<Material> material) 
@@ -8,13 +9,14 @@ Intersection::Intersection(float t, const Vec3& position, const Vec3& ray_direct
 	set_normal(ray_direction, out_normal);
 }
 
-Vec3 Intersection::lighting(const std::vector<std::shared_ptr<Lightsource>>& lights) const {
+Vec3 Intersection::lighting(const Scene& scene, float epsilon) const {
 
 	Vec3 lightColor{ 1.0f, 1.0f, 1.0f };
 	Vec3 diffuse, specular;
-	for (const auto& light : lights) {
+	for (const auto& light : scene.lights()) {
 
 		Ray lightray{ light->lightRay(m_position) };
+		if (scene.intersect(lightray, epsilon, 1.0f).has_value()) continue;
 
 		const Vec3 lightDir{ Vec3::normalize(lightray.direction()) };
 		float weight{ Vec3::dot(lightDir, m_normal) };
@@ -30,7 +32,7 @@ Vec3 Intersection::lighting(const std::vector<std::shared_ptr<Lightsource>>& lig
 	}
 
 	Vec3 ambient{ 0.5f * m_material->color() };
-	return ambient + (diffuse + specular) / float(lights.size());
+	return ambient + (diffuse + specular) / float(scene.lights().size());
 
 }
 

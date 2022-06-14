@@ -1,8 +1,9 @@
 #pragma once
 
-#include "vec3.h"
-#include "../scene/lightsource.h"
+#include "../scene/scene.fwd.h"
 #include "../scene/material.h"
+
+
 
 
 class Intersection {
@@ -11,7 +12,7 @@ public:
 
 	Intersection(float t, const Vec3& position, const Vec3& ray_direction, const Vec3& out_normal, const std::shared_ptr<Material> material);
 
-	Vec3 lighting(const std::vector<std::shared_ptr<Lightsource>>& lights) const;
+	Vec3 lighting(const Scene& scene, float epsilon) const;
 
 	bool front_face() const;
 	float t() const;
