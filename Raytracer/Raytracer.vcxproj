@@ -149,12 +149,13 @@
   <ItemGroup>
     <ClCompile Include="src\camera\camera.cpp" />
     <ClCompile Include="src\core\intersection.cpp" />
+    <ClCompile Include="src\scene\lighting\area_light.cpp" />
     <ClCompile Include="src\utility\utility.cpp" />
-    <ClCompile Include="src\scene\directional_light.cpp" />
+    <ClCompile Include="src\scene\lighting\directional_light.cpp" />
     <ClCompile Include="src\utility\image.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\scene\material.cpp" />
-    <ClCompile Include="src\scene\point_light.cpp" />
+    <ClCompile Include="src\scene\lighting\point_light.cpp" />
     <ClCompile Include="src\core\ray.cpp" />
     <ClCompile Include="src\scene\scene.cpp" />
     <ClCompile Include="src\scene\sphere.cpp" />
@@ -164,13 +165,14 @@
     <ClInclude Include="src\camera\camera.h" />
     <ClInclude Include="src\core\core.h" />
     <ClInclude Include="src\core\intersection.h" />
+    <ClInclude Include="src\scene\lighting\area_light.h" />
     <ClInclude Include="src\scene\scene.fwd.h" />
     <ClInclude Include="src\utility\utility.h" />
-    <ClInclude Include="src\scene\directional_light.h" />
+    <ClInclude Include="src\scene\lighting\directional_light.h" />
     <ClInclude Include="src\utility\image.h" />
-    <ClInclude Include="src\scene\lightsource.h" />
+    <ClInclude Include="src\scene\lighting\lightsource.h" />
     <ClInclude Include="src\scene\material.h" />
-    <ClInclude Include="src\scene\point_light.h" />
+    <ClInclude Include="src\scene\lighting\point_light.h" />
     <ClInclude Include="src\core\ray.h" />
     <ClInclude Include="src\scene\scene.h" />
     <ClInclude Include="src\scene\scene_object.h" />

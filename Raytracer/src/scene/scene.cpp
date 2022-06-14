@@ -1,6 +1,6 @@
 #include "scene.h"
 
-#include "point_light.h"
+#include "lighting/area_light.h"
 #include "sphere.h"
 #include "../utility/utility.h"
 
@@ -60,7 +60,7 @@ Scene demoScene() {
 
 	Scene scene;
 	
-	scene.add(std::make_shared<PointLight>(PointLight(Vec3{0.0f, 2.0f, -1.0f})));
+	scene.add(std::make_shared<AreaLight>(AreaLight(Vec3{0.0f, 2.0f, -1.0f}, 0.1f)));
 
 	scene.add(std::make_shared<Sphere>(Sphere{ Vec3{0.0f, -100.5f, -1.0f }, 100.0f, material_ground }));
 	scene.add(std::make_shared<Sphere>(Sphere{ Vec3{ 0.0f, 1.0f, -1.0f }, 0.5f, material_center }));

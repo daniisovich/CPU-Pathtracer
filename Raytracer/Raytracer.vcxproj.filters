@@ -36,10 +36,10 @@
     <ClCompile Include="src\utility\image.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\scene\directional_light.cpp">
+    <ClCompile Include="src\scene\lighting\directional_light.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\scene\point_light.cpp">
+    <ClCompile Include="src\scene\lighting\point_light.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\scene\material.cpp">
@@ -49,6 +49,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\core\intersection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scene\lighting\area_light.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -71,16 +74,16 @@
     <ClInclude Include="src\core\vec3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\scene\lightsource.h">
+    <ClInclude Include="src\scene\lighting\lightsource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\utility\image.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\scene\directional_light.h">
+    <ClInclude Include="src\scene\lighting\directional_light.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\scene\point_light.h">
+    <ClInclude Include="src\scene\lighting\point_light.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\scene\material.h">
@@ -96,6 +99,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\scene\scene.fwd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\lighting\area_light.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
