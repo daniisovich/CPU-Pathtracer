@@ -14,7 +14,7 @@ public:
 
 	Material(const Vec3& color, float reflectiveness, float fuzziness, BRDF brdf);
 
-	virtual std::pair<Vec3, std::optional<Vec3>> scatter(const Vec3& ray_direction, const Vec3& normal) const;
+	virtual std::optional<Vec3> scatter(const Vec3& ray_direction, const Vec3& normal) const;
 
 	const Vec3 color() const;
 	float reflectiveness() const;
