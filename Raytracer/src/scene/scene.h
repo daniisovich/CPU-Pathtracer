@@ -5,7 +5,7 @@
 #include <memory>
 #include <vector>
 
-#include "lightsource.h"
+#include "lighting/lightsource.h"
 #include "scene_object.h"
 
 

@@ -1,7 +1,6 @@
 #pragma once
 
-#include "../core/ray.h"
-#include "../core/vec3.h"
+#include "../../core/ray.h"
 
 
 class Lightsource {
