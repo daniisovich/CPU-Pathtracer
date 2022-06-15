@@ -1,7 +1,7 @@
 #include "scene.h"
 
 #include "lighting/area_light.h"
-#include "sphere.h"
+#include "geometry/sphere.h"
 #include "../utility/utility.h"
 
 

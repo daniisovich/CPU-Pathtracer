@@ -2,9 +2,9 @@
 
 #include <optional>
 
-#include "../core/ray.h"
-#include "../core/intersection.h"
-#include "material.h"
+#include "../../core/ray.h"
+#include "../../core/intersection.h"
+#include "../material.h"
 
 
 class SceneObject {

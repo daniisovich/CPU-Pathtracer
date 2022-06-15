@@ -6,7 +6,7 @@
 #include <vector>
 
 #include "lighting/lightsource.h"
-#include "scene_object.h"
+#include "geometry/scene_object.h"
 #include "camera/camera.h"
 
 
