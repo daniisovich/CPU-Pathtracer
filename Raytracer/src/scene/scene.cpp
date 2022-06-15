@@ -64,9 +64,9 @@ std::vector<std::shared_ptr<Lightsource>> Scene::lights() const { return m_light
 
 Scene demoScene(float aspect_ratio) {
 
-	const float horizontal_fov{ 110.0f };
+	const float horizontal_fov{ 110.0f }, focus_distance{ 1.5f }, aperture{ focus_distance / 15.0f };
 	const Vec3 camera_position{ 0.0f, 0.0f, 0.5f }, camera_look_at{ 0.0f, 0.0f, -1.0f }, camera_up{ 0.0f, 1.0f, 0.0f };
-	Camera camera{ camera_position, camera_look_at, camera_up, horizontal_fov, aspect_ratio, 0.1f, 1.5f };
+	Camera camera{ camera_position, camera_look_at, camera_up, horizontal_fov, aspect_ratio, aperture, focus_distance };
 
 	Scene scene{ camera };
 
@@ -78,7 +78,7 @@ Scene demoScene(float aspect_ratio) {
 	auto material_right  = std::make_shared<Material>(Material{ Vec3{ 0.8f, 0.6f, 0.2f }, 0.3f, 0.8f, Vec3::reflect });
 
 	scene.add(std::make_shared<Sphere>(Sphere{ Vec3{0.0f, -100.5f, -1.0f }, 100.0f, material_ground }));
-	scene.add(std::make_shared<Sphere>(Sphere{ Vec3{ 0.0f, 0.5f, -1.0f }, 0.5f, material_center }));
+	scene.add(std::make_shared<Sphere>(Sphere{ Vec3{ 0.0f, 0.0f, -1.0f }, 0.5f, material_center }));
 	scene.add(std::make_shared<Sphere>(Sphere{ Vec3{ -1.0f, 0.0f, -0.5f }, 0.5f, material_left }));
 	scene.add(std::make_shared<Sphere>(Sphere{ Vec3{ 1.0f, 0.0f, -1.5f }, 0.5f, material_right }));
 
