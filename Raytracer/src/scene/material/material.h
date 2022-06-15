@@ -3,7 +3,7 @@
 #include <optional>
 #include <functional>
 
-#include "../core/ray.h"
+#include "../../core/ray.h"
 
 
 using BRDF = std::function<Vec3 (const Vec3&, const Vec3&)>;

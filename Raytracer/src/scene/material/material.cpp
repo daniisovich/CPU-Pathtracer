@@ -1,6 +1,6 @@
 #include "material.h"
 
-#include "../utility/utility.h"
+#include "../../utility/utility.h"
 
 
 Material::Material(const Vec3& color, float reflectiveness, float fuzziness, BRDF brdf) 

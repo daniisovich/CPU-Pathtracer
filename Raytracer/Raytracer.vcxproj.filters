@@ -42,7 +42,7 @@
     <ClCompile Include="src\scene\lighting\point_light.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\scene\material.cpp">
+    <ClCompile Include="src\scene\material\material.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\utility\utility.cpp">
@@ -86,7 +86,7 @@
     <ClInclude Include="src\scene\lighting\point_light.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\scene\material.h">
+    <ClInclude Include="src\scene\material\material.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\utility\utility.h">

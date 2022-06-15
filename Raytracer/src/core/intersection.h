@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../scene/scene.fwd.h"
-#include "../scene/material.h"
+#include "../scene/material/material.h"
 
 
 

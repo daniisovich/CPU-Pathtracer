@@ -5,7 +5,7 @@
 #include "utility/utility.h"
 #include "utility/image.h"
 #include "scene/scene.h"
-#include "scene/material.h"
+#include "scene/material/material.h"
 #include "scene/camera/camera.h"
 
 

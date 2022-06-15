@@ -154,7 +154,7 @@
     <ClCompile Include="src\scene\lighting\directional_light.cpp" />
     <ClCompile Include="src\utility\image.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\scene\material.cpp" />
+    <ClCompile Include="src\scene\material\material.cpp" />
     <ClCompile Include="src\scene\lighting\point_light.cpp" />
     <ClCompile Include="src\core\ray.cpp" />
     <ClCompile Include="src\scene\scene.cpp" />
@@ -171,7 +171,7 @@
     <ClInclude Include="src\scene\lighting\directional_light.h" />
     <ClInclude Include="src\utility\image.h" />
     <ClInclude Include="src\scene\lighting\lightsource.h" />
-    <ClInclude Include="src\scene\material.h" />
+    <ClInclude Include="src\scene\material\material.h" />
     <ClInclude Include="src\scene\lighting\point_light.h" />
     <ClInclude Include="src\core\ray.h" />
     <ClInclude Include="src\scene\scene.h" />
