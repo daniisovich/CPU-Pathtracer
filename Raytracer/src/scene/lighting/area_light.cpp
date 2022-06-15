@@ -3,7 +3,7 @@
 #include "../../utility/utility.h"
 
 
-AreaLight::AreaLight(const Vec3& position, float radius) : m_position{ position }, m_radius{ radius } {}
+AreaLight::AreaLight(const Vec3& position, float radius, const Vec3& color) : m_position{ position }, m_radius{ radius }, Lightsource{ color } { }
 
 const Ray AreaLight::lightRay(const Vec3& position) const {
 

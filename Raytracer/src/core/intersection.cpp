@@ -11,27 +11,26 @@ Intersection::Intersection(float t, const Vec3& position, const Vec3& ray_direct
 
 Vec3 Intersection::lighting(const Scene& scene, float epsilon) const {
 
-	Vec3 lightColor{ 1.0f, 1.0f, 1.0f };
 	Vec3 diffuse, specular;
 	for (const auto& light : scene.lights()) {
-
+		Vec3 lightColor{ light->color() };
 		Ray lightray{ light->lightRay(m_position) };
 		if (scene.intersect(lightray, epsilon, 1.0f).has_value()) continue;
 
 		const Vec3 lightDir{ Vec3::normalize(lightray.direction()) };
 		float weight{ Vec3::dot(lightDir, m_normal) };
 		if (weight < 0.0f) continue;
-		diffuse += 0.3f * weight * lightColor;
+		diffuse += 0.5f * weight * m_material->color() * lightColor;
 
 		const Vec3 reflectedLight{ Vec3::reflect(-lightDir, m_normal) };
 		assert(reflectedLight == Vec3::normalize(reflectedLight));
 		weight = Vec3::dot(reflectedLight, m_view_dir);
 		if (weight < 0.0f) continue;
-		specular += 0.2f * std::powf(weight, 10) * lightColor;
+		specular += 0.3f * std::powf(weight, 10) * m_material->color() * lightColor;
 
 	}
 
-	Vec3 ambient{ 0.5f * m_material->color() };
+	Vec3 ambient{ 0.2f * m_material->color() };
 	return ambient + (diffuse + specular) / float(scene.lights().size());
 
 }

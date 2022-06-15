@@ -8,7 +8,7 @@ class AreaLight : public Lightsource {
 public:
 
 	AreaLight() = default;
-	AreaLight(const Vec3& position, float radius);
+	AreaLight(const Vec3& position, float radius, const Vec3& color);
 
 	const Ray lightRay(const Vec3& position) const override;
 
