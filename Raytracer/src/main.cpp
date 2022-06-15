@@ -22,15 +22,15 @@ Vec3 traceRay(const Ray& ray, const Scene& scene, int num_bounces, float epsilon
 	Vec3 color{ hit.lighting(scene, epsilon)};
 	if (!reflection.has_value()) return color;
 
-	return color * traceRay(Ray{ hit.position(), reflection.value() }, scene, num_bounces - 1, epsilon);
+	const float reflectiveness{ hit.material()->reflectiveness() };
+	return (1.0f - reflectiveness) * color + reflectiveness * traceRay(Ray{ hit.position(), reflection.value() }, scene, num_bounces - 1, epsilon);
 
 }
 
 int main() {
 
 	const float aspect_ratio{ 16.0f / 9 };
-	const int width{ 1280 };
-	const int height{ int(width / aspect_ratio) };
+	const int width{ 1280 }, height{ int(width / aspect_ratio) };
 	const float horizontal_fov{ 110.0f };
 
 	Image img{ width, height };
