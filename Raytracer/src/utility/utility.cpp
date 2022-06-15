@@ -1,5 +1,8 @@
 #include "utility.h"
 
+#define _USE_MATH_DEFINES
+#include <math.h>
+
 
 namespace utility {
 
@@ -12,12 +15,21 @@ namespace utility {
 
 	}
 
+	Vec3 randomInDisk(float radius) {
+
+		const float phi{ randomScalar(0.0f, 2.0f * float(M_PI)) };
+		const float length{ randomScalar(0.0f, std::abs(radius)) };
+
+		return length * Vec3{ std::cosf(phi), std::sinf(phi), 0.0f };
+
+	}
+
 	Vec3 randomInSphere(float radius) {
 
-		while (true) {
-			auto point{ Vec3::random(-radius, radius) };
-			if (point.length() <= radius) return point;
-		}
+		const float theta{ randomScalar(0.0f, 2.0f * float(M_PI)) }, phi{ randomScalar(0.0f, 2.0f * float(M_PI)) };
+		const float length{ randomScalar(0.0f, std::abs(radius)) };
+
+		return length * Vec3{ std::sinf(theta) * std::cosf(phi), std::sinf(theta) * std::sinf(phi), std::cosf(theta) };
 
 	}
 
