@@ -147,7 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\camera\camera.cpp" />
+    <ClCompile Include="src\scene\camera\camera.cpp" />
     <ClCompile Include="src\core\intersection.cpp" />
     <ClCompile Include="src\scene\lighting\area_light.cpp" />
     <ClCompile Include="src\utility\utility.cpp" />
@@ -162,7 +162,7 @@
     <ClCompile Include="src\core\vec3.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\camera\camera.h" />
+    <ClInclude Include="src\scene\camera\camera.h" />
     <ClInclude Include="src\core\core.h" />
     <ClInclude Include="src\core\intersection.h" />
     <ClInclude Include="src\scene\lighting\area_light.h" />

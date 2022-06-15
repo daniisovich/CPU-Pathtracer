@@ -30,7 +30,7 @@
     <ClCompile Include="src\scene\scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\camera\camera.cpp">
+    <ClCompile Include="src\scene\camera\camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\utility\image.cpp">
@@ -62,7 +62,7 @@
     <ClInclude Include="src\core\ray.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\camera\camera.h">
+    <ClInclude Include="src\scene\camera\camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\scene\sphere.h">

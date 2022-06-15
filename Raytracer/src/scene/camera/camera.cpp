@@ -7,6 +7,8 @@
 float degreeToRadian(float deg);
 
 
+Camera::Camera() : Camera(Vec3{ 0.0f, 0.0f, 0.0f }, Vec3{ 0.0f, 0.0f, -1.0f }, Vec3{ 0.0f, 1.0f, 0.0f }, 90.0f, 16.0f / 9.0f) { }
+
 Camera::Camera(float horizontal_fov_deg, float aspect_ratio) : Camera(Vec3{ 0.0f, 0.0f, 0.0f }, Vec3{ 0.0f, 0.0f, -1.0f }, Vec3{ 0.0f, 1.0f, 0.0f }, horizontal_fov_deg, aspect_ratio) { }
 
 Camera::Camera(const Vec3& position, const Vec3& look_at, const Vec3& up, float horizontal_fov_deg, float aspect_ratio) : m_position{ position } {

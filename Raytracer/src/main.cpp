@@ -6,7 +6,7 @@
 #include "utility/image.h"
 #include "scene/scene.h"
 #include "scene/material.h"
-#include "camera/camera.h"
+#include "scene/camera/camera.h"
 
 
 Vec3 traceRay(const Ray& ray, const Scene& scene, int num_bounces, float epsilon = 0.001f) {
@@ -31,21 +31,17 @@ int main() {
 
 	const float aspect_ratio{ 16.0f / 9 };
 	const int width{ 1280 }, height{ int(width / aspect_ratio) };
-	const float horizontal_fov{ 110.0f };
 
 	Image img{ width, height };
 
-	const Vec3 camera_position{ 0.0f, 0.0f, 3.0f }, camera_look_at{ 0.0f, 0.0f, -1.0f }, camera_up{ 0.0f, 1.0f, 0.0f };
-	Camera camera{ camera_position, camera_look_at, camera_up, horizontal_fov, aspect_ratio };
-
-	Scene scene{ demoScene() };
+	Scene scene{ demoScene(aspect_ratio) };
 
 	const int num_samples{ 100 }, num_bounces{ 50 };
 	for (int y{ 0 }; y < img.height(); ++y) {
 		for (int x{ 0 }; x < img.width(); ++x) {
 			Vec3 accumulated_color{};
 			for (int s{ 0 }; s < num_samples; ++s) {
-				const Ray ray{ camera.spawnRay((x + utility::randomScalar()) / img.width(), (y + utility::randomScalar()) / img.height())};
+				const Ray ray{ scene.spawnRay((x + utility::randomScalar()) / img.width(), (y + utility::randomScalar()) / img.height())};
 				accumulated_color += traceRay(ray, scene, num_bounces);
 			}
 			img.setPixel(x, y, accumulated_color / float(num_samples));
