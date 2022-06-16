@@ -15,7 +15,7 @@ const std::optional<Intersection> Sphere::intersect(const Ray& ray, float near, 
 
 	const auto result = solveQuadratic(a, half_b, c);
 	// ray doesn't hit object
-	if (!result.has_value()) return {};
+	if (!result.has_value()) return std::nullopt;
 	const auto[t1, t2] = result.value();
 
 	// ray starts before object
@@ -27,7 +27,7 @@ const std::optional<Intersection> Sphere::intersect(const Ray& ray, float near, 
 		return getIntersection(ray, t2);
 
 	// ray starts after object
-	return {};
+	return std::nullopt;
 
 }
 
@@ -43,7 +43,7 @@ const Intersection Sphere::getIntersection(const Ray& ray, float t) const {
 const std::optional<std::pair<float, float>> solveQuadratic(float a, float half_b, float c) {
 
 	const float discriminant = half_b * half_b - a * c;
-	if (discriminant < 0) return {};
+	if (discriminant < 0) return std::nullopt;
 	if (discriminant == 0) return std::pair{ half_b / a, half_b / a };
 
 	const float sqrt_disc{ sqrt(discriminant) };

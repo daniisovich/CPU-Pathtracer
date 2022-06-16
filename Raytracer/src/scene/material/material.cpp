@@ -8,7 +8,7 @@ Material::Material(const Vec3& color, float reflectiveness, float fuzziness, BRD
 
 std::optional<Vec3> Material::scatter(const Vec3& ray_direction, const Vec3& normal) const {
 
-	if (m_reflectiveness == 0.0f) return {};
+	if (m_reflectiveness == 0.0f) return std::nullopt;
 	Vec3 reflected{ m_brdf(ray_direction, normal) };
 	return { reflected + m_fuzziness * utility::randomInSphere()};
 

@@ -37,7 +37,7 @@ Ray Camera::spawnRay(float u, float v) const {
 	const Vec3 random{ m_lens_radius * utility::randomInDisk() };
 	const Vec3 origin_offset{ m_right * random.x() + m_up * random.y() };
 
-	return { m_position + origin_offset, m_lower_left_corner + m_view.horizontal * u + m_view.vertical * v - (m_position + origin_offset) };
+	return { m_position + origin_offset, Vec3::normalize(m_lower_left_corner + m_view.horizontal * u + m_view.vertical * v - (m_position + origin_offset)) };
 
 }
 

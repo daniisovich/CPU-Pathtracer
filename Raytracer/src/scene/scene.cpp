@@ -46,7 +46,7 @@ Ray Scene::spawnRay(float u, float v) const {
 
 std::optional<Intersection> Scene::intersect(const Ray& ray, float near, float far) const {
 
-	std::optional<Intersection> intersection;
+	std::optional<Intersection> intersection{ std::nullopt };
 	for (size_t i{ 0 }; i < m_objects.size(); ++i) {
 
 		const auto result{ m_objects[i]->intersect(ray, near, far) };
@@ -64,7 +64,7 @@ std::vector<std::shared_ptr<Lightsource>> Scene::lights() const { return m_light
 
 Scene demoScene(float aspect_ratio) {
 
-	const float horizontal_fov{ 110.0f }, focus_distance{ 1.5f }, aperture{ focus_distance / 15.0f };
+	const float horizontal_fov{ 110.0f }, focus_distance{ 1.0f }, aperture{ focus_distance / 10.0f };
 	const Vec3 camera_position{ 0.0f, 0.0f, 0.5f }, camera_look_at{ 0.0f, 0.0f, -1.0f }, camera_up{ 0.0f, 1.0f, 0.0f };
 	Camera camera{ camera_position, camera_look_at, camera_up, horizontal_fov, aspect_ratio, aperture, focus_distance };
 
