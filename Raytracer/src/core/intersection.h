@@ -1,5 +1,7 @@
 #pragma once
 
+#include "intersection.fwd.h"
+
 #include "../scene/scene.fwd.h"
 #include "../scene/material/material.h"
 
