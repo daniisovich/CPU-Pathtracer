@@ -17,6 +17,7 @@ public:
 	const Vec3 direction() const;
 
 private:
+
 	Vec3 m_origin, m_direction;
 
 };
