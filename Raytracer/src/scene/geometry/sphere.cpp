@@ -34,7 +34,7 @@ const std::optional<Intersection> Sphere::intersect(const Ray& ray, float near, 
 const Intersection Sphere::getIntersection(const Ray& ray, float t) const {
 
 	const Vec3 position{ ray.point(t) };
-	const Vec3 out_normal{ Vec3::normalize(position - m_center) };
+	const Vec3 out_normal{ Vec3::normalize((position - m_center) / m_radius) };
 	Intersection intersection{ t, position, ray.direction(), out_normal, m_material };
 	return intersection;
 
