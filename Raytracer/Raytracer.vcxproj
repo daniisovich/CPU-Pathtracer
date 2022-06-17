@@ -150,11 +150,13 @@
     <ClCompile Include="src\scene\camera\camera.cpp" />
     <ClCompile Include="src\core\intersection.cpp" />
     <ClCompile Include="src\scene\lighting\area_light.cpp" />
+    <ClCompile Include="src\scene\material\dielectric.cpp" />
+    <ClCompile Include="src\scene\material\lambertian.cpp" />
+    <ClCompile Include="src\scene\material\metal.cpp" />
     <ClCompile Include="src\utility\utility.cpp" />
     <ClCompile Include="src\scene\lighting\directional_light.cpp" />
     <ClCompile Include="src\utility\image.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\scene\material\material.cpp" />
     <ClCompile Include="src\scene\lighting\point_light.cpp" />
     <ClCompile Include="src\core\ray.cpp" />
     <ClCompile Include="src\scene\scene.cpp" />
@@ -162,10 +164,14 @@
     <ClCompile Include="src\core\vec3.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\core\intersection.fwd.h" />
     <ClInclude Include="src\scene\camera\camera.h" />
     <ClInclude Include="src\core\core.h" />
     <ClInclude Include="src\core\intersection.h" />
     <ClInclude Include="src\scene\lighting\area_light.h" />
+    <ClInclude Include="src\scene\material\dielectric.h" />
+    <ClInclude Include="src\scene\material\lambertian.h" />
+    <ClInclude Include="src\scene\material\metal.h" />
     <ClInclude Include="src\scene\scene.fwd.h" />
     <ClInclude Include="src\utility\utility.h" />
     <ClInclude Include="src\scene\lighting\directional_light.h" />
