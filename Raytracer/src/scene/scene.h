@@ -41,3 +41,4 @@ private:
 
 
 Scene demoScene(float aspect_ratio);
+Scene randomScene(float aspect_ratio);

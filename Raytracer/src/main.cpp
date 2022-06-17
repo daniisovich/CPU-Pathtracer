@@ -11,19 +11,17 @@
 
 Vec3 traceRay(const Ray& ray, const Scene& scene, int num_bounces, float epsilon = 0.001f) {
 
-	if (num_bounces <= 0) return {};
+	if (num_bounces <= 0) return Vec3{0.0f};
 
 	const auto intersection{ scene.intersect(ray, epsilon, utility::infinity) };
 	if (!intersection.has_value()) return utility::gradientColor(ray.direction());
 
 	const Intersection hit{ intersection.value() };
 
-	const auto reflection = hit.material()->scatter(ray.direction(), hit.normal());
-	Vec3 color{ hit.lighting(scene, epsilon)};
-	if (!reflection.has_value()) return color;
+	const Ray reflection{ hit.material()->scatter(ray, hit) };
+	const Vec3 color{ hit.material()->color() };
 
-	const float reflectiveness{ hit.material()->reflectiveness() };
-	return (1.0f - reflectiveness) * color + reflectiveness * traceRay(Ray{ hit.position(), reflection.value() }, scene, num_bounces - 1, epsilon);
+	return color * traceRay(reflection, scene, num_bounces - 1, epsilon);
 
 }
 
@@ -34,9 +32,9 @@ int main() {
 
 	Image img{ width, height };
 
-	Scene scene{ demoScene(aspect_ratio) };
+	Scene scene{ randomScene(aspect_ratio) };
 
-	const int num_samples{ 100 }, num_bounces{ 50 };
+	const int num_samples{ 500 }, num_bounces{ 50 };
 	for (int y{ 0 }; y < img.height(); ++y) {
 		for (int x{ 0 }; x < img.width(); ++x) {
 			Vec3 accumulated_color{};
