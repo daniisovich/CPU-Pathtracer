@@ -14,8 +14,8 @@ class Camera {
 public:
 
 	Camera();
-	Camera(float horizontal_fov_deg, float aspect_ratio, float aperture, float focus_distance);
-	Camera(const Vec3& position, const Vec3& look_at, const Vec3& up, float horizontal_fov_deg, float aspect_ratio, float aperture, float focus_distance);
+	Camera(float horizontal_fov_deg, float aspect_ratio, float aperture, float focal_distance);
+	Camera(const Vec3& position, const Vec3& look_at, const Vec3& up, float horizontal_fov_deg, float aspect_ratio, float aperture, float focal_distance);
 
 	Ray spawnRay(float u, float v) const;
 
