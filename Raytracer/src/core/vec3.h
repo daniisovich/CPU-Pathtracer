@@ -20,11 +20,13 @@ public:
 	void normalize();
 	static Vec3 normalize(const Vec3& vec);
 
+	bool degenerated() const;
+
 	static float dot(const Vec3& a, const Vec3& b);
 	static Vec3 cross(const Vec3& a, const Vec3& b);
 
 	static Vec3 reflect(const Vec3& vec, const Vec3& normal);
-	static Vec3 refract(const Vec3& vec, const Vec3& normal, float index);
+	static Vec3 refract(const Vec3& vec, const Vec3& normal, float refractive_index_out, float refractive_index_in);
 
 	static Vec3 clamp(const Vec3& vec, float lower_bound, float upper_bound);
 	static Vec3 gammaCorrection(const Vec3& vec, int gamma);

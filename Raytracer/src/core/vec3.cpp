@@ -4,7 +4,8 @@
 #include <algorithm>
 
 #include "../utility/utility.h"
-
+#include "../core/core.h"
+#include <iostream>
 
 Vec3::Vec3() : Vec3(0.0f) {}
 Vec3::Vec3(float val) : Vec3(val, val, val) {}
@@ -13,6 +14,12 @@ Vec3::Vec3(const Vec3& other) : m_data{ other.m_data } {}
 
 Vec3 Vec3::normalize(const Vec3& vec) {
 	return vec / vec.length();
+}
+
+bool Vec3::degenerated() const {
+	float epsilon{ 1e-8f };
+	if (1 < 3) epsilon = 1e-7f;
+	return std::fabs(m_data[0]) < epsilon && std::fabs(m_data[1]) < epsilon && std::fabs(m_data[2]) < epsilon;
 }
 
 void Vec3::normalize() {
@@ -33,12 +40,28 @@ Vec3 Vec3::reflect(const Vec3& vec, const Vec3& normal) {
 	return vec - 2 * Vec3::dot(vec, normal) * normal;
 }
 
-Vec3 Vec3::refract(const Vec3& vec, const Vec3& normal, float index) {
+float reflectance(float cos, float refractive_index_out, float refractive_index_in) {
 
-	Vec3 l{ normalize(vec) };
-	float costheta1{ Vec3::dot(l, -normal) };
-	float costheta2 = sqrt(1 - index * index * (1 - costheta1 * costheta1));
-	return index * l + (index * costheta1 - costheta2) * normal;
+	const float r0 = std::pow((refractive_index_out - refractive_index_in) / (refractive_index_out + refractive_index_in), 2);
+	return r0 + (1 - r0) * std::pow(1 - cos, 5);
+
+}
+
+Vec3 Vec3::refract(const Vec3& vec, const Vec3& normal, float refractive_index_out, float refractive_index_in) {
+
+	const float ratio{ refractive_index_out / refractive_index_in };
+
+	const Vec3 l{ normalize(vec) };
+	const float cos_theta1{ std::fminf(Vec3::dot(l, -normal), 1.0f) };
+	const float sin_theta1{ sqrt(1.0f - cos_theta1 * cos_theta1) };
+
+	
+	// total internal reflection / schlick's approximation
+	if (ratio * sin_theta1 > 1.0f || reflectance(cos_theta1, refractive_index_out, refractive_index_in) > utility::randomScalar()) 
+		return Vec3::reflect(vec, normal);
+
+	const float cos_theta2 = sqrt(1 - std::fminf(ratio * ratio * (1 - cos_theta1 * cos_theta1), 1.0f));
+	return ratio * l + (ratio * cos_theta1 - cos_theta2) * normal;
 
 }
 
