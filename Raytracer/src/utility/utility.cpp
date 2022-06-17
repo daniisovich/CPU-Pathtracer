@@ -17,32 +17,38 @@ namespace utility {
 
 	Vec3 randomInDisk(float radius) {
 
-		const float phi{ randomScalar(0.0f, 2.0f * float(M_PI)) };
-		const float length{ randomScalar(0.0f, std::abs(radius)) };
+		while (true) {
+			Vec3 random{ randomScalar(-radius, radius), randomScalar(-radius, radius), 0.0f };
+			if (random.sq_length() <= radius * radius) return random;
+		}
 
-		return length * Vec3{ std::cosf(phi), std::sinf(phi), 0.0f };
+		//const float phi{ randomScalar(0.0f, 2.0f * float(M_PI)) };
+		//const float length{ randomScalar(0.0f, std::abs(radius)) };
+
+		//return length * Vec3{ std::cosf(phi), std::sinf(phi), 0.0f };
 
 	}
 
 	Vec3 randomInSphere(float radius) {
 
-		const float theta{ randomScalar(0.0f, 2.0f * float(M_PI)) }, phi{ randomScalar(0.0f, 2.0f * float(M_PI)) };
-		const float length{ randomScalar(0.0f, std::abs(radius)) };
+		while (true) {
+			auto random{ Vec3::random(-radius, radius) };
+			if (random.sq_length() <= radius * radius) return random;
+		}
 
-		return length * Vec3{ std::sinf(theta) * std::cosf(phi), std::sinf(theta) * std::sinf(phi), std::cosf(theta) };
+		//const float theta{ randomScalar(0.0f, float(M_PI)) }, phi{ randomScalar(0.0f, 2.0f * float(M_PI))};
+		//const float length{ randomScalar(0.0f, std::abs(radius)) };
+
+		//return length * Vec3{ std::sinf(theta) * std::cosf(phi), std::sinf(theta) * std::sinf(phi), std::cosf(theta) };
 
 	}
 
-	Vec3 randomInHemisphere(const Vec3& normal) {
+	Vec3 randomOnHemisphere(const Vec3& normal) {
 
 		auto random_unit_vec{ Vec3::normalize(randomInSphere()) };
 		if (Vec3::dot(random_unit_vec, normal) > 0.0f) return random_unit_vec;
 		return -random_unit_vec;
 
-	}
-
-	Vec3 brdfHemisphere(const Vec3& ray_direction, const Vec3& normal) {
-		return randomInHemisphere(normal);
 	}
 
 	Vec3 gradientColor(const Vec3& direction, const Vec3& lower_color, const Vec3& upper_color) {
