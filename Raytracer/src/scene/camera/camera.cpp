@@ -41,6 +41,6 @@ Ray Camera::spawnRay(float u, float v) const {
 
 }
 
-float degreeToRadian(float deg) {
+inline float degreeToRadian(float deg) {
 	return deg / 180 * float(M_PI);
 }
