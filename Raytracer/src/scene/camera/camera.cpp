@@ -23,10 +23,10 @@ Camera::Camera(const Vec3& position, const Vec3& look_at, const Vec3& up, float 
 	m_up = Vec3::cross(m_right, view_dir);
 
 	float horizontal_fov_rad{ degreeToRadian(horizontal_fov_deg) };
-	float viewport_width{ 2 * tanf(horizontal_fov_rad / 2) };
+	float viewport_width{ 2 * focal_distance * tanf(horizontal_fov_rad / 2) };
 	float viewport_height{ viewport_width / aspect_ratio };
 
-	m_view = { focal_distance * m_right * viewport_width, focal_distance * m_up * viewport_height };
+	m_view = {  m_right * viewport_width, m_up * viewport_height };
 	m_lower_left_corner = m_position + focal_distance * view_dir - (m_view.horizontal + m_view.vertical) / 2;
 
 }
