@@ -32,9 +32,9 @@ int main() {
 
 	Image img{ width, height };
 
-	Scene scene{ randomScene(aspect_ratio) };
+	Scene scene{ demoScene(aspect_ratio) };
 
-	const int num_samples{ 500 }, num_bounces{ 50 };
+	const int num_samples{ 100 }, num_bounces{ 50 };
 	for (int y{ 0 }; y < img.height(); ++y) {
 		for (int x{ 0 }; x < img.width(); ++x) {
 			Vec3 accumulated_color{};
