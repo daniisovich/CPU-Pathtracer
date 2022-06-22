@@ -6,11 +6,11 @@ void ThreadPool::threadfunc() {
 	while (true) {
 		std::function<void()> job;
 		{
-			std::unique_lock<std::mutex> lock{ queue_mutex };
-			mutex_condition.wait(lock, [this]() { return !jobs.empty() || terminate; });
-			if (terminate) return;
-			job = jobs.front();
-			jobs.pop();
+			std::unique_lock<std::mutex> lock{ m_queue_mutex };
+			m_mutex_condition.wait(lock, [this]() { return !m_jobs.empty() || m_terminate; });
+			if (m_terminate) return;
+			job = m_jobs.front();
+			m_jobs.pop();
 		}
 		job();
 	}
@@ -19,9 +19,9 @@ void ThreadPool::threadfunc() {
 
 void ThreadPool::start(int num_threads) {
 
-	threads.resize(num_threads);
+	m_threads.resize(num_threads);
 	for (int i{ 0 }; i < num_threads; ++i) {
-		threads[i] = std::thread{ [this]() { this->threadfunc(); } };
+		m_threads[i] = std::thread{ [this]() { this->threadfunc(); } };
 	}
 
 }
@@ -29,10 +29,10 @@ void ThreadPool::start(int num_threads) {
 void ThreadPool::queueJob(const ThreadJob& job, int x, int y, int num_samples, int num_bounces, const Scene& scene, Image& img) {
 
 	{
-		std::unique_lock<std::mutex> lock{ queue_mutex };
-		jobs.push([job, x, y, num_samples, num_bounces, &scene, &img]() { job(x, y, num_samples, num_bounces, scene, img); });
+		std::unique_lock<std::mutex> lock{ m_queue_mutex };
+		m_jobs.push([job, x, y, num_samples, num_bounces, &scene, &img]() { job(x, y, num_samples, num_bounces, scene, img); });
 	}
-	mutex_condition.notify_one();
+	m_mutex_condition.notify_one();
 
 }
 
@@ -40,8 +40,8 @@ bool ThreadPool::complete() {
 
 	bool complete;
 	{
-		std::unique_lock<std::mutex> lock{ queue_mutex };
-		complete = jobs.empty();
+		std::unique_lock<std::mutex> lock{ m_queue_mutex };
+		complete = m_jobs.empty();
 	}
 	return complete;
 
@@ -50,14 +50,14 @@ bool ThreadPool::complete() {
 void ThreadPool::stop() {
 
 	{
-		std::unique_lock<std::mutex> lock{ queue_mutex };
-		terminate = true;
+		std::unique_lock<std::mutex> lock{ m_queue_mutex };
+		m_terminate = true;
 	}
-	mutex_condition.notify_all();
+	m_mutex_condition.notify_all();
 
-	for (std::thread& thread : threads) {
+	for (std::thread& thread : m_threads) {
 		thread.join();
 	}
-	threads.clear();
+	m_threads.clear();
 
 }

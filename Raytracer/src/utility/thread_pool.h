@@ -26,11 +26,11 @@ private:
 
 	void threadfunc();
 
-	bool terminate{ false };
-	std::mutex queue_mutex;
-	std::condition_variable mutex_condition;
+	bool m_terminate{ false };
+	std::mutex m_queue_mutex;
+	std::condition_variable m_mutex_condition;
 
-	std::vector<std::thread> threads;
-	std::queue<std::function<void()>> jobs;
+	std::vector<std::thread> m_threads;
+	std::queue<std::function<void()>> m_jobs;
 
 };
