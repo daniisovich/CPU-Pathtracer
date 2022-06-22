@@ -153,6 +153,7 @@
     <ClCompile Include="src\scene\material\dielectric.cpp" />
     <ClCompile Include="src\scene\material\lambertian.cpp" />
     <ClCompile Include="src\scene\material\metal.cpp" />
+    <ClCompile Include="src\utility\thread_pool.cpp" />
     <ClCompile Include="src\utility\utility.cpp" />
     <ClCompile Include="src\scene\lighting\directional_light.cpp" />
     <ClCompile Include="src\utility\image.cpp" />
@@ -173,6 +174,7 @@
     <ClInclude Include="src\scene\material\lambertian.h" />
     <ClInclude Include="src\scene\material\metal.h" />
     <ClInclude Include="src\scene\scene.fwd.h" />
+    <ClInclude Include="src\utility\thread_pool.h" />
     <ClInclude Include="src\utility\utility.h" />
     <ClInclude Include="src\scene\lighting\directional_light.h" />
     <ClInclude Include="src\utility\image.h" />
