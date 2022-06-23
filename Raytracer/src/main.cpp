@@ -49,13 +49,13 @@ int main() {
 
 	ThreadPool pool;
 
-	const int num_samples{ 100 }, num_bounces{ 50 };
+	const int num_samples{ 500 }, num_bounces{ 50 };
 	for (int y{ 0 }; y < img.height(); ++y) {
 		for (int x{ 0 }; x < img.width(); ++x) {
 			pool.queueJob(calculatePixelColor, x, y, num_samples, num_bounces, scene, img);
 		}
 	}
-	pool.start(1);
+	pool.start(8);
 	
 	while (!pool.complete()) {
 		Sleep(1000);
