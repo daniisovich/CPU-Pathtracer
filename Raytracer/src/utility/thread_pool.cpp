@@ -27,13 +27,7 @@ void ThreadPool::start(int num_threads) {
 }
 
 void ThreadPool::queueJob(const ThreadJob& job, int x, int y, int num_samples, int num_bounces, const Scene& scene, Image& img) {
-
-	{
-		std::unique_lock<std::mutex> lock{ m_queue_mutex };
-		m_jobs.push([job, x, y, num_samples, num_bounces, &scene, &img]() { job(x, y, num_samples, num_bounces, scene, img); });
-	}
-	m_mutex_condition.notify_one();
-
+	m_jobs.push([job, x, y, num_samples, num_bounces, &scene, &img]() { job(x, y, num_samples, num_bounces, scene, img); });
 }
 
 bool ThreadPool::complete() {
