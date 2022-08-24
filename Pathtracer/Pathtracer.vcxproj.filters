@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="core">
+      <UniqueIdentifier>{4E40957C-3A77-960D-E363-7C10CF79120F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="precompiled">
+      <UniqueIdentifier>{B96624CA-251C-9DBF-AE10-97961AC593C3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scene">
+      <UniqueIdentifier>{D3075810-3F1C-80C1-089E-232174717CF2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scene\camera">
+      <UniqueIdentifier>{0B4565D4-F7A7-F478-A02D-2D2F8C6FC0FB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scene\geometry">
+      <UniqueIdentifier>{AE4EEF6C-9A1C-E372-83B0-53996F1DBFD7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scene\lighting">
+      <UniqueIdentifier>{D8B4252B-C482-1931-AD16-8A579983F595}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scene\material">
+      <UniqueIdentifier>{F14FB1CD-DD1D-A5D3-C6B1-15FAB21E8138}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utility">
+      <UniqueIdentifier>{79DE5C48-E5BD-DBE3-EED5-66BA5A344245}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\core\intersection.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\ray.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\vec3.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\precompiled\pch.h">
+      <Filter>precompiled</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\camera\camera.h">
+      <Filter>scene\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\geometry\scene_object.h">
+      <Filter>scene\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\geometry\sphere.h">
+      <Filter>scene\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\material\dielectric.h">
+      <Filter>scene\material</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\material\lambertian.h">
+      <Filter>scene\material</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\material\material.h">
+      <Filter>scene\material</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\material\metal.h">
+      <Filter>scene\material</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\scene.h">
+      <Filter>scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utility\image.h">
+      <Filter>utility</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utility\thread_pool.h">
+      <Filter>utility</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utility\utility.h">
+      <Filter>utility</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\core\intersection.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\ray.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\vec3.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\precompiled\pch.cpp">
+      <Filter>precompiled</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scene\camera\camera.cpp">
+      <Filter>scene\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scene\geometry\sphere.cpp">
+      <Filter>scene\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scene\material\dielectric.cpp">
+      <Filter>scene\material</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scene\material\lambertian.cpp">
+      <Filter>scene\material</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scene\material\metal.cpp">
+      <Filter>scene\material</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scene\scene.cpp">
+      <Filter>scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utility\image.cpp">
+      <Filter>utility</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utility\thread_pool.cpp">
+      <Filter>utility</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utility\utility.cpp">
+      <Filter>utility</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
