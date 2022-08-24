@@ -1,7 +1,7 @@
 # CPU-Pathtracer
 
 This repository contains an implementation of a simple Pathtracer using C++, following the described techniques
-of the _Ray Tracing in One Weekend_ book. It works solely on the CPU and uses multithreading to concurrently work on multiple pixels.
+of the _Ray Tracing in One Weekend_ book. It works solely on the CPU and uses multi-threading to concurrently work on multiple pixels.
 
 ## Building and Running
 
